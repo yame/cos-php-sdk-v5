@@ -177,7 +177,7 @@ class Client extends GuzzleClient {
 			return $request->withHeader('User-Agent', $this->cosConfig['userAgent']);
         }));
         if ($this->cosConfig['anonymous'] != true) {
-            $handler->push($this::handleSignature($this->cosConfig['secretId'], $this->cosConfig['secretKey'], $this->cosConfig['signHost']));
+            $handler->push($this::handleSignature($this->cosConfig['secretId'], $this->cosConfig['secretKey'], $this->cosConfig));
         }
         if ($this->cosConfig['token'] != null) {
             $handler->push(Middleware::mapRequest(function (RequestInterface $request) {
